@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StepSQL · SQL step by step</title>
+    <!-- The app replaces lang, the title and the description with the active language (src/i18n/index.ts). -->
+    <meta name="description" content="See how the data changes at every stage of a T-SQL query." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1c1a17" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="canonical" href="https://svvxyz.github.io/stepsql/" />
+
+    <!-- Open Graph / Twitter: link previews when the page is shared. Social networks need absolute URLs.
+         public/social-card.png (1200x630) is a real screenshot of the app; replace it with a designed card if you like. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="StepSQL" />
+    <meta property="og:title" content="StepSQL · SQL step by step" />
+    <meta property="og:description" content="An educational tool that shows how the data changes at every stage of the logical order of a T-SQL (SQL Server) query. In English and Spanish." />
+    <meta property="og:url" content="https://svvxyz.github.io/stepsql/" />
+    <meta property="og:image" content="https://svvxyz.github.io/stepsql/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="StepSQL running a GROUP BY query, stopped at the aggregates stage of the logical order timeline." />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="StepSQL · SQL step by step" />
+    <meta name="twitter:description" content="See how the data changes at every stage of a T-SQL query." />
+    <meta name="twitter:image" content="https://svvxyz.github.io/stepsql/social-card.png" />
+
+    <script>
+      // Apply the saved theme before first paint to avoid a flash.
+      try {
+        var t = localStorage.getItem('stepsql.theme');
+        if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <noscript>StepSQL needs JavaScript. / StepSQL necesita JavaScript.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,384 @@
+{
+  "app": {
+    "title": "StepSQL",
+    "tagline": "SQL paso a paso",
+    "subtitle": "Mira cómo se transforman los datos en cada etapa de una consulta T-SQL.",
+    "language": "Idioma",
+    "toggleTheme": "Cambiar entre tema claro y oscuro",
+    "themeLight": "Tema claro",
+    "themeDark": "Tema oscuro",
+    "logicalOrderTitle": "Orden lógico, no plan físico.",
+    "logicalOrderNote": "Las etapas siguen el orden lógico con que SQL Server define el resultado: FROM → WHERE → GROUP BY → HAVING → SELECT → DISTINCT → ORDER BY → TOP. El motor real puede ejecutar las operaciones en otro orden (plan de ejecución), pero el resultado es el mismo.",
+    "footer": "Herramienta educativa de código abierto (licencia MIT). Los datos se procesan solo en tu navegador.",
+    "infoButton": "Sobre el orden lógico de las etapas"
+  },
+  "common": {
+    "rows_one": "{{count}} fila",
+    "rows_other": "{{count}} filas",
+    "groups_one": "{{count}} grupo",
+    "groups_other": "{{count}} grupos",
+    "columns_one": "{{count}} columna",
+    "columns_other": "{{count}} columnas"
+  },
+  "table": {
+    "heading": "Tabla",
+    "name": "Nombre de la tabla",
+    "columnName": "Nombre de la columna {{n}}",
+    "columnType": "Tipo de la columna {{name}}",
+    "removeColumn": "Quitar la columna {{name}}",
+    "addColumn": "Columna",
+    "cell": "Fila {{row}}, columna {{column}}",
+    "removeRow": "Quitar la fila {{n}}",
+    "addRow": "Fila",
+    "nullHint": "Una celda vacía es NULL.",
+    "reset": "Restaurar la tabla de ejemplo",
+    "newColumn": "Columna",
+    "types": {
+      "text": "Texto",
+      "int": "Entero",
+      "decimal": "Decimal",
+      "date": "Fecha"
+    },
+    "problems": {
+      "title": "Revisa la tabla",
+      "emptyTableName": "La tabla necesita un nombre.",
+      "emptyColumnName": "La columna {{position}} no tiene nombre.",
+      "duplicateColumn": "Hay más de una columna llamada {{column}}.",
+      "invalidCell": "Fila {{row}}, columna {{column}}: «{{value}}» no es un valor válido de tipo $t(table.types.{{type}}). Las fechas se escriben AAAA-MM-DD.",
+      "duplicateTable": "Ya existe otra tabla llamada {{name}}.",
+      "titleNamed": "Revisa la tabla {{name}}"
+    }
+  },
+  "query": {
+    "heading": "Consulta",
+    "editorLabel": "Editor de la consulta SQL",
+    "placeholder": "Escribe aquí una consulta SELECT…",
+    "run": "Ejecutar paso a paso",
+    "cursorPosition": "Línea {{line}}, columna {{column}}",
+    "runShortcutSuffix": "en el editor"
+  },
+  "steps": {
+    "heading": "Paso a paso",
+    "empty": "Escribe una consulta y pulsa «Ejecutar paso a paso».",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "showAll": "Ver todos los pasos",
+    "showOne": "Ver de a un paso",
+    "timeline": "Etapas de la consulta",
+    "stepOf": "Paso {{current}} de {{total}}",
+    "noColumnName": "(Sin nombre de columna): SQL Server no le da nombre a una expresión sin alias.",
+    "reasonColumn": "Motivo",
+    "emptyTable": "(sin filas)",
+    "discarded": "Descartada",
+    "groupsHeading": "Grupos formados",
+    "calcHeading": "Cálculo por grupo",
+    "wholeTable": "Toda la tabla",
+    "calc": {
+      "countStar_one": "{{count}} fila en el grupo",
+      "countStar_other": "{{count}} filas en el grupo",
+      "countValues_one": "{{count}} valor no NULL",
+      "countValues_other": "{{count}} valores no NULL",
+      "noValues": "ningún valor (todos NULL o grupo vacío)",
+      "truncated": "(entero: se descartan los decimales)",
+      "nullsIgnored_one": "se ignora {{count}} NULL",
+      "nullsIgnored_other": "se ignoran {{count}} NULL",
+      "duplicatesIgnored_one": "DISTINCT: se ignora {{count}} repetido",
+      "duplicatesIgnored_other": "DISTINCT: se ignoran {{count}} repetidos",
+      "nullTerm": "NULL: la función lo ignora",
+      "showAllTerms": "Mostrar los {{count}} términos"
+    },
+    "rowsAria": "Filas: entran {{rowsIn}}, salen {{rowsOut}}",
+    "groupColumn": "Grupo",
+    "filter": {
+      "label": "Mostrar filas",
+      "all": "Todas",
+      "kept": "Pasan",
+      "discarded": "Descartadas"
+    },
+    "where": {
+      "summaryFalse_one": "fila da falso.",
+      "summaryFalse_other": "filas dan falso.",
+      "summaryUnknown_one": "fila da UNKNOWN (compara con NULL).",
+      "summaryUnknown_other": "filas dan UNKNOWN (comparan con NULL).",
+      "summaryFalsePart_one": "fila descartada porque {{condition}} da falso.",
+      "summaryFalsePart_other": "filas descartadas porque {{condition}} da falso.",
+      "summaryUnknownPart_one": "fila descartada porque {{condition}} da UNKNOWN (compara con NULL).",
+      "summaryUnknownPart_other": "filas descartadas porque {{condition}} da UNKNOWN (comparan con NULL)."
+    },
+    "select": {
+      "projected": "Columnas del resultado",
+      "dropped": "No se proyectan",
+      "computed": "calculada"
+    }
+  },
+  "stage": {
+    "from": {
+      "title": "Se lee la tabla",
+      "short": "FROM"
+    },
+    "join": {
+      "title": "Se combinan tablas",
+      "short": "JOIN"
+    },
+    "where": {
+      "title": "Se filtran las filas",
+      "short": "WHERE"
+    },
+    "groupBy": {
+      "title": "Se forman los grupos",
+      "short": "GROUP BY"
+    },
+    "aggregate": {
+      "title": "Se calculan los agregados",
+      "short": "Agregados"
+    },
+    "having": {
+      "title": "Se filtran los grupos",
+      "short": "HAVING"
+    },
+    "select": {
+      "title": "Se eligen y calculan las columnas",
+      "short": "SELECT"
+    },
+    "distinct": {
+      "title": "Se quitan las filas repetidas",
+      "short": "DISTINCT"
+    },
+    "orderBy": {
+      "title": "Se ordenan las filas",
+      "short": "ORDER BY"
+    },
+    "top": {
+      "title": "Se toman las primeras filas",
+      "short": "TOP"
+    },
+    "result": {
+      "title": "Resultado final",
+      "short": "Resultado"
+    }
+  },
+  "step": {
+    "from": {
+      "explanation": "Es el punto de partida: se toman todas las filas y columnas de la tabla, y cada etapa siguiente trabaja sobre ellas."
+    },
+    "where": {
+      "explanation": "La condición se evalúa en cada fila. Solo pasan las que dan verdadero; las que dan falso o UNKNOWN se descartan."
+    },
+    "groupBy": {
+      "explanation": "Las filas con el mismo valor se juntan en un grupo; cada color (G1, G2…) es un grupo.",
+      "wholeTable": "No hay GROUP BY, pero la consulta usa funciones de agregado: todas las filas forman un único grupo."
+    },
+    "aggregate": {
+      "explanation": "Cada agregado se calcula con las filas de su grupo, y cada grupo queda resumido en una sola fila."
+    },
+    "having": {
+      "explanation": "Filtra grupos, no filas: la condición se evalúa con los agregados ya calculados. Por eso aquí sí se puede usar SUM o COUNT, y en WHERE no."
+    },
+    "select": {
+      "explanation": "Los alias y las expresiones se calculan recién aquí; por eso no se pueden usar en WHERE, GROUP BY ni HAVING.",
+      "star": "Con * se devuelven todas las columnas de la tabla, en su orden."
+    },
+    "distinct": {
+      "explanation": "Una fila es repetida si es igual en todas sus columnas; solo queda la primera."
+    },
+    "orderBy": {
+      "explanation": "ASC va de menor a mayor y DESC de mayor a menor; si hay empate, decide la siguiente clave."
+    },
+    "top": {
+      "explanation": "Se quedan las primeras filas en el orden actual; el resto se descarta.",
+      "percent": "Con PERCENT, la cantidad se calcula sobre el total y se redondea hacia arriba: el {{percent}} % de {{count}} filas son $t(common.rows, {\"count\": {{n}} })."
+    },
+    "result": {
+      "explanation": "Es lo que devolvería SQL Server."
+    }
+  },
+  "reason": {
+    "where": {
+      "false": "{{condition}} es falsa: {{evaluated}}",
+      "unknown": "{{condition}} da UNKNOWN porque compara con NULL: {{evaluated}}"
+    },
+    "having": {
+      "false": "{{condition}} es falsa: {{evaluated}}",
+      "unknown": "{{condition}} da UNKNOWN porque compara con NULL: {{evaluated}}"
+    },
+    "distinct": {
+      "duplicate": "Repite la fila {{row}}"
+    },
+    "top": {
+      "beyond": "Queda fuera de TOP {{n}}"
+    }
+  },
+  "note": {
+    "unknownIsDiscarded": "Una comparación con NULL no es verdadera ni falsa: da UNKNOWN, y WHERE o HAVING solo dejan pasar lo verdadero. Para buscar valores NULL se usa IS NULL.",
+    "intDivision": "En {{column}} se dividen dos enteros: SQL Server descarta los decimales (7 / 2 = 3). Para obtener 3,5 escribe 7 / 2.0.",
+    "avgInt": "{{aggregate}} promedia enteros, así que SQL Server descarta los decimales del resultado (16 / 3 = 5). Para obtener decimales: AVG(columna * 1.0).",
+    "nullsIgnored_one": "{{aggregate}} ignora los NULL: se ignoró {{count}} valor NULL.",
+    "nullsIgnored_other": "{{aggregate}} ignora los NULL: se ignoraron {{count}} valores NULL.",
+    "nullGroup": "Las filas con NULL en la columna de agrupación forman su propio grupo: para GROUP BY, los NULL son iguales entre sí.",
+    "emptyGroupsNoRows": "No llega ninguna fila a GROUP BY, así que no se forma ningún grupo y el resultado queda vacío.",
+    "aggregateWithoutGroupBy": "Sin GROUP BY, una consulta con agregados siempre devuelve una sola fila, aunque no haya filas: COUNT da 0 y SUM, AVG, MIN y MAX dan NULL.",
+    "havingWithoutGroupBy": "HAVING sin GROUP BY trata toda la tabla como un único grupo.",
+    "caseInsensitive": "Con la intercalación por defecto de SQL Server, los textos se comparan sin distinguir mayúsculas: «perro» y «Perro» caen en el mismo grupo.",
+    "nullsSortFirst": "SQL Server considera NULL como el valor más bajo: aparece primero con ASC y al final con DESC.",
+    "orderByHiddenColumn": "Se ordena por {{column}}, que no está en el SELECT: ORDER BY puede usar columnas de la tabla aunque no se muestren.",
+    "topWithoutOrder": "TOP sin ORDER BY no garantiza qué filas devuelve: SQL Server puede elegir cualquiera. Aquí se toman en el orden de la tabla.",
+    "distinctNulls": "Para DISTINCT, dos NULL se consideran iguales."
+  },
+  "errorPanel": {
+    "title": "La consulta tiene un error",
+    "sqlServer": "Equivale al error {{number}} de SQL Server."
+  },
+  "error": {
+    "EMPTY_QUERY": "La consulta está vacía. Escribe una sentencia SELECT.",
+    "PARSE_ERROR": "Sintaxis incorrecta cerca de «{{near}}» (línea {{line}}, columna {{column}}).",
+    "NOT_A_SELECT": "Solo se pueden visualizar consultas SELECT; {{statement}} no está soportado.",
+    "MULTIPLE_STATEMENTS": "Escribe una sola consulta a la vez (se encontraron {{count}}).",
+    "UNSUPPORTED_FEATURE": "{{feature}}: todavía no está soportado en esta versión.",
+    "MISSING_FROM": "Falta la cláusula FROM: indica de qué tabla se leen los datos.",
+    "TABLE_NOT_FOUND": "El nombre de objeto «{{table}}» no es válido: no existe una tabla con ese nombre.",
+    "COLUMN_NOT_FOUND": "El nombre de columna «{{column}}» no es válido: la tabla {{table}} no tiene esa columna.",
+    "INVALID_QUALIFIER": "No se pudo enlazar el identificador «{{qualifier}}.{{column}}»: {{qualifier}} no es el nombre ni el alias de la tabla del FROM.",
+    "ALIAS_NOT_ALLOWED": "«{{alias}}» es un alias del SELECT y no se puede usar en {{clause}}, porque SELECT se procesa después. Repite la expresión completa.",
+    "COLUMN_NOT_IN_GROUP_BY": "La columna «{{column}}» no es válida en {{clause}} porque no está en GROUP BY ni dentro de una función de agregado.",
+    "AGGREGATE_IN_WHERE": "Un agregado como {{aggregate}} no puede estar en WHERE: WHERE filtra filas antes de agrupar. Para filtrar por un agregado usa HAVING.",
+    "AGGREGATE_IN_GROUP_BY": "No se puede usar una función de agregado en GROUP BY: {{aggregate}}.",
+    "NESTED_AGGREGATE": "No se puede usar una función de agregado dentro de otra: {{aggregate}}.",
+    "AGGREGATE_TYPE_INVALID": "El tipo de datos {{type}} no es válido para el operador {{fn}}.",
+    "OPERAND_TYPE_CLASH": "Tipos incompatibles en la operación: {{left}} {{op}} {{right}}.",
+    "NON_BOOLEAN_CONDITION": "{{expression}} no es una condición: se esperaba una comparación (por ejemplo con =, >, LIKE o IS NULL).",
+    "GROUP_BY_CONSTANT": "Cada expresión de GROUP BY debe contener al menos una columna: {{expression}}.",
+    "ORDER_BY_POSITION_OUT_OF_RANGE": "ORDER BY {{position}} está fuera de rango: el SELECT tiene $t(common.columns, {\"count\": {{count}} }).",
+    "ORDER_BY_NOT_IN_SELECT_DISTINCT": "Con SELECT DISTINCT, los elementos de ORDER BY deben aparecer en la lista del SELECT: {{item}}.",
+    "INVALID_TOP": "El valor de TOP no es válido: {{value}}.",
+    "CONVERSION_FAILED": "Error de conversión: «{{value}}» no se puede convertir al tipo {{type}}.",
+    "DIVIDE_BY_ZERO": "Error de división por cero.",
+    "INVALID_TABLE_DATA": "La tabla {{table}} tiene un valor no válido en la fila {{row}}, columna {{column}}: «{{value}}» no es de tipo $t(table.types.{{type}})."
+  },
+  "feature": {
+    "function": "La función {{name}}",
+    "JOIN": "JOIN (combinar varias tablas, previsto para la versión 1.0)",
+    "SUBQUERY": "Las subconsultas",
+    "ROLLUP": "ROLLUP (previsto para una versión futura)",
+    "CUBE": "CUBE (previsto para una versión futura)",
+    "GROUPING_SETS": "GROUPING SETS (previsto para una versión futura)",
+    "UNION": "UNION",
+    "INTERSECT": "INTERSECT",
+    "EXCEPT": "EXCEPT",
+    "WITH_CTE": "WITH (expresiones de tabla comunes)",
+    "SELECT_INTO": "SELECT ... INTO",
+    "FOR_XML_FOR_JSON": "FOR XML / FOR JSON",
+    "OVER": "Las funciones de ventana (OVER)",
+    "CASE": "La expresión CASE",
+    "CAST": "CAST",
+    "CONVERT": "CONVERT",
+    "TOP_WITH_TIES": "TOP ... WITH TIES",
+    "OFFSET_FETCH": "OFFSET ... FETCH (paginación)",
+    "ROW_VALUE": "Las listas de valores entre paréntesis",
+    "EXPRESSION": "Esta expresión",
+    "ESCAPE": "LIKE ... ESCAPE"
+  },
+  "sample": {
+    "table": "Mascotas",
+    "columns": {
+      "id": "Id",
+      "name": "Nombre",
+      "species": "Especie",
+      "breed": "Raza",
+      "color": "Color",
+      "age": "Edad",
+      "weight": "Peso",
+      "adoption": "FechaAdopcion"
+    },
+    "species": {
+      "dog": "Perro",
+      "cat": "Gato",
+      "rabbit": "Conejo",
+      "bird": "Ave",
+      "hamster": "Hámster"
+    },
+    "breeds": {
+      "labrador": "Labrador",
+      "poodle": "Caniche",
+      "germanShepherd": "Pastor alemán",
+      "beagle": "Beagle",
+      "mixedDog": "Mestizo",
+      "siamese": "Siamés",
+      "persian": "Persa",
+      "european": "Común europeo",
+      "mixedCat": "Mestizo",
+      "dwarf": "Enano",
+      "lop": "Belier",
+      "canary": "Canario",
+      "parakeet": "Periquito",
+      "cockatiel": "Ninfa",
+      "syrian": "Sirio",
+      "russian": "Ruso"
+    },
+    "colors": {
+      "black": "Negro",
+      "white": "Blanco",
+      "brown": "Marrón",
+      "gray": "Gris",
+      "golden": "Dorado",
+      "orange": "Naranja",
+      "cream": "Crema",
+      "tricolor": "Tricolor"
+    },
+    "aliases": {
+      "count": "Cantidad"
+    }
+  },
+  "timeline": {
+    "notUsed": "{{stage}}: la consulta no usa esta etapa"
+  },
+  "tables": {
+    "heading": "Tablas",
+    "new": "Nueva tabla",
+    "import": "Importar",
+    "importSoon": "Importar CSV o JSON llegará en la versión 0.2.",
+    "inQuery": "en la consulta",
+    "hasProblems": "revisar",
+    "empty": "No hay tablas. Crea una nueva.",
+    "restoreSample": "Restaurar tabla de ejemplo",
+    "newTableName": "NuevaTabla",
+    "edit": "Editar",
+    "editTable": "Editar la tabla {{name}}"
+  },
+  "sheet": {
+    "title": "Editar tabla",
+    "close": "Cerrar (Esc)",
+    "delete": "Borrar tabla",
+    "confirmDelete": "¿Borrar la tabla {{name}}? No se puede deshacer.",
+    "confirmYes": "Sí, borrar",
+    "cancel": "Cancelar"
+  },
+  "stale": {
+    "message": "Los datos cambiaron. Vuelve a ejecutar.",
+    "run": "Ejecutar de nuevo"
+  },
+  "anim": {
+    "label": "Animación",
+    "replay": "Repetir",
+    "speed": "Velocidad de la animación",
+    "speeds": {
+      "slow": "Lenta",
+      "normal": "Normal",
+      "fast": "Rápida"
+    },
+    "reduced": "movimiento reducido",
+    "reducedHint": "Tu sistema pide reducir el movimiento: en lugar de desplazamientos se muestran fundidos suaves. Se cambia en la configuración de accesibilidad del sistema.",
+    "true": "verdadero",
+    "false": "falso",
+    "unknown": "UNKNOWN",
+    "pause": "Pausa",
+    "resume": "Seguir",
+    "skip": "Saltar al final",
+    "start": "Animar",
+    "newGroup": "nuevo grupo"
+  },
+  "projector": {
+    "on": "Modo proyector",
+    "off": "Salir del modo proyector",
+    "hint": "Texto más grande y solo el paso a paso"
+  }
+}

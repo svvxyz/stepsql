@@ -1,0 +1,384 @@
+{
+  "app": {
+    "title": "StepSQL",
+    "tagline": "SQL step by step",
+    "subtitle": "See how the data changes at every stage of a T-SQL query.",
+    "language": "Language",
+    "toggleTheme": "Switch between light and dark theme",
+    "themeLight": "Light theme",
+    "themeDark": "Dark theme",
+    "logicalOrderTitle": "Logical order, not the physical plan.",
+    "logicalOrderNote": "Stages follow the logical order SQL Server uses to define the result: FROM → WHERE → GROUP BY → HAVING → SELECT → DISTINCT → ORDER BY → TOP. The real engine may run operations in a different order (execution plan), but the result is the same.",
+    "footer": "Open-source educational tool (MIT license). Data is processed only in your browser.",
+    "infoButton": "About the logical order of the stages"
+  },
+  "common": {
+    "rows_one": "{{count}} row",
+    "rows_other": "{{count}} rows",
+    "groups_one": "{{count}} group",
+    "groups_other": "{{count}} groups",
+    "columns_one": "{{count}} column",
+    "columns_other": "{{count}} columns"
+  },
+  "table": {
+    "heading": "Table",
+    "name": "Table name",
+    "columnName": "Name of column {{n}}",
+    "columnType": "Type of column {{name}}",
+    "removeColumn": "Remove column {{name}}",
+    "addColumn": "Column",
+    "cell": "Row {{row}}, column {{column}}",
+    "removeRow": "Remove row {{n}}",
+    "addRow": "Row",
+    "nullHint": "An empty cell is NULL.",
+    "reset": "Restore the sample table",
+    "newColumn": "Column",
+    "types": {
+      "text": "Text",
+      "int": "Integer",
+      "decimal": "Decimal",
+      "date": "Date"
+    },
+    "problems": {
+      "title": "Check the table",
+      "emptyTableName": "The table needs a name.",
+      "emptyColumnName": "Column {{position}} has no name.",
+      "duplicateColumn": "There is more than one column named {{column}}.",
+      "invalidCell": "Row {{row}}, column {{column}}: \"{{value}}\" is not a valid $t(table.types.{{type}}) value. Dates are written YYYY-MM-DD.",
+      "duplicateTable": "Another table is already named {{name}}.",
+      "titleNamed": "Check table {{name}}"
+    }
+  },
+  "query": {
+    "heading": "Query",
+    "editorLabel": "SQL query editor",
+    "placeholder": "Type a SELECT query here…",
+    "run": "Run step by step",
+    "cursorPosition": "Line {{line}}, column {{column}}",
+    "runShortcutSuffix": "in the editor"
+  },
+  "steps": {
+    "heading": "Step by step",
+    "empty": "Write a query and press \"Run step by step\".",
+    "prev": "Previous",
+    "next": "Next",
+    "showAll": "Show all steps",
+    "showOne": "Show one step at a time",
+    "timeline": "Query stages",
+    "stepOf": "Step {{current}} of {{total}}",
+    "noColumnName": "(No column name): SQL Server does not name an expression without an alias.",
+    "reasonColumn": "Reason",
+    "emptyTable": "(no rows)",
+    "discarded": "Discarded",
+    "groupsHeading": "Groups formed",
+    "calcHeading": "Calculation per group",
+    "wholeTable": "Whole table",
+    "calc": {
+      "countStar_one": "{{count}} row in the group",
+      "countStar_other": "{{count}} rows in the group",
+      "countValues_one": "{{count}} non-NULL value",
+      "countValues_other": "{{count}} non-NULL values",
+      "noValues": "no values (all NULL or empty group)",
+      "truncated": "(integer: decimals are dropped)",
+      "nullsIgnored_one": "{{count}} NULL ignored",
+      "nullsIgnored_other": "{{count}} NULLs ignored",
+      "duplicatesIgnored_one": "DISTINCT: {{count}} duplicate ignored",
+      "duplicatesIgnored_other": "DISTINCT: {{count}} duplicates ignored",
+      "nullTerm": "NULL: the function ignores it",
+      "showAllTerms": "Show all {{count}} terms"
+    },
+    "rowsAria": "Rows: {{rowsIn}} in, {{rowsOut}} out",
+    "groupColumn": "Group",
+    "filter": {
+      "label": "Show rows",
+      "all": "All",
+      "kept": "Passed",
+      "discarded": "Discarded"
+    },
+    "where": {
+      "summaryFalse_one": "row is false.",
+      "summaryFalse_other": "rows are false.",
+      "summaryUnknown_one": "row is UNKNOWN (it compares with NULL).",
+      "summaryUnknown_other": "rows are UNKNOWN (they compare with NULL).",
+      "summaryFalsePart_one": "row discarded because {{condition}} is false.",
+      "summaryFalsePart_other": "rows discarded because {{condition}} is false.",
+      "summaryUnknownPart_one": "row discarded because {{condition}} is UNKNOWN (it compares with NULL).",
+      "summaryUnknownPart_other": "rows discarded because {{condition}} is UNKNOWN (they compare with NULL)."
+    },
+    "select": {
+      "projected": "Result columns",
+      "dropped": "Not projected",
+      "computed": "computed"
+    }
+  },
+  "stage": {
+    "from": {
+      "title": "Read the table",
+      "short": "FROM"
+    },
+    "join": {
+      "title": "Combine tables",
+      "short": "JOIN"
+    },
+    "where": {
+      "title": "Filter the rows",
+      "short": "WHERE"
+    },
+    "groupBy": {
+      "title": "Form the groups",
+      "short": "GROUP BY"
+    },
+    "aggregate": {
+      "title": "Compute the aggregates",
+      "short": "Aggregates"
+    },
+    "having": {
+      "title": "Filter the groups",
+      "short": "HAVING"
+    },
+    "select": {
+      "title": "Choose and compute the columns",
+      "short": "SELECT"
+    },
+    "distinct": {
+      "title": "Remove duplicate rows",
+      "short": "DISTINCT"
+    },
+    "orderBy": {
+      "title": "Sort the rows",
+      "short": "ORDER BY"
+    },
+    "top": {
+      "title": "Take the first rows",
+      "short": "TOP"
+    },
+    "result": {
+      "title": "Final result",
+      "short": "Result"
+    }
+  },
+  "step": {
+    "from": {
+      "explanation": "This is the starting point: every row and column of the table is taken, and each next stage works on them."
+    },
+    "where": {
+      "explanation": "The condition is evaluated on each row. Only rows where it is true pass; those where it is false or UNKNOWN are discarded."
+    },
+    "groupBy": {
+      "explanation": "Rows with the same value are put together in a group; each color (G1, G2…) is a group.",
+      "wholeTable": "There is no GROUP BY, but the query uses aggregate functions: all the rows form a single group."
+    },
+    "aggregate": {
+      "explanation": "Each aggregate is computed with the rows of its group, and each group is summarized in a single row."
+    },
+    "having": {
+      "explanation": "It filters groups, not rows: the condition is evaluated with the aggregates already computed. That is why SUM or COUNT can be used here but not in WHERE."
+    },
+    "select": {
+      "explanation": "Aliases and expressions are only computed here; that is why they cannot be used in WHERE, GROUP BY or HAVING.",
+      "star": "With * every column of the table is returned, in its order."
+    },
+    "distinct": {
+      "explanation": "A row is a duplicate if it is equal in every column; only the first one stays."
+    },
+    "orderBy": {
+      "explanation": "ASC goes from lowest to highest and DESC from highest to lowest; on a tie, the next key decides."
+    },
+    "top": {
+      "explanation": "The first rows in the current order are kept; the rest are discarded.",
+      "percent": "With PERCENT, the number is computed from the total and rounded up: {{percent}}% of {{count}} rows is $t(common.rows, {\"count\": {{n}} })."
+    },
+    "result": {
+      "explanation": "This is what SQL Server would return."
+    }
+  },
+  "reason": {
+    "where": {
+      "false": "{{condition}} is false: {{evaluated}}",
+      "unknown": "{{condition}} is UNKNOWN because it compares with NULL: {{evaluated}}"
+    },
+    "having": {
+      "false": "{{condition}} is false: {{evaluated}}",
+      "unknown": "{{condition}} is UNKNOWN because it compares with NULL: {{evaluated}}"
+    },
+    "distinct": {
+      "duplicate": "Repeats row {{row}}"
+    },
+    "top": {
+      "beyond": "Outside TOP {{n}}"
+    }
+  },
+  "note": {
+    "unknownIsDiscarded": "A comparison with NULL is neither true nor false: it is UNKNOWN, and WHERE or HAVING only let through what is true. To look for NULL values use IS NULL.",
+    "intDivision": "{{column}} divides two integers: SQL Server drops the decimals (7 / 2 = 3). To get 3.5 write 7 / 2.0.",
+    "avgInt": "{{aggregate}} averages integers, so SQL Server drops the decimals of the result (16 / 3 = 5). To get decimals: AVG(column * 1.0).",
+    "nullsIgnored_one": "{{aggregate}} ignores NULLs: {{count}} NULL value was ignored.",
+    "nullsIgnored_other": "{{aggregate}} ignores NULLs: {{count}} NULL values were ignored.",
+    "nullGroup": "Rows with NULL in the grouping column form their own group: for GROUP BY, NULLs are equal to each other.",
+    "emptyGroupsNoRows": "No rows reach GROUP BY, so no group is formed and the result is empty.",
+    "aggregateWithoutGroupBy": "Without GROUP BY, a query with aggregates always returns exactly one row, even with no rows: COUNT gives 0 and SUM, AVG, MIN and MAX give NULL.",
+    "havingWithoutGroupBy": "HAVING without GROUP BY treats the whole table as a single group.",
+    "caseInsensitive": "With SQL Server's default collation, text is compared ignoring case: \"dog\" and \"Dog\" fall in the same group.",
+    "nullsSortFirst": "SQL Server treats NULL as the lowest value: it comes first with ASC and last with DESC.",
+    "orderByHiddenColumn": "Rows are sorted by {{column}}, which is not in the SELECT: ORDER BY can use table columns even if they are not shown.",
+    "topWithoutOrder": "TOP without ORDER BY does not guarantee which rows come back: SQL Server may pick any. Here they are taken in table order.",
+    "distinctNulls": "For DISTINCT, two NULLs are considered equal."
+  },
+  "errorPanel": {
+    "title": "The query has an error",
+    "sqlServer": "Equivalent to SQL Server error {{number}}."
+  },
+  "error": {
+    "EMPTY_QUERY": "The query is empty. Write a SELECT statement.",
+    "PARSE_ERROR": "Incorrect syntax near \"{{near}}\" (line {{line}}, column {{column}}).",
+    "NOT_A_SELECT": "Only SELECT queries can be visualized; {{statement}} is not supported.",
+    "MULTIPLE_STATEMENTS": "Write one query at a time ({{count}} were found).",
+    "UNSUPPORTED_FEATURE": "{{feature}}: not supported yet in this version.",
+    "MISSING_FROM": "The FROM clause is missing: say which table the data comes from.",
+    "TABLE_NOT_FOUND": "Invalid object name \"{{table}}\": there is no table with that name.",
+    "COLUMN_NOT_FOUND": "Invalid column name \"{{column}}\": the {{table}} table has no such column.",
+    "INVALID_QUALIFIER": "The multi-part identifier \"{{qualifier}}.{{column}}\" could not be bound: {{qualifier}} is not the name or alias of the table in FROM.",
+    "ALIAS_NOT_ALLOWED": "\"{{alias}}\" is a SELECT alias and cannot be used in {{clause}}, because SELECT is processed later. Repeat the whole expression.",
+    "COLUMN_NOT_IN_GROUP_BY": "Column \"{{column}}\" is invalid in {{clause}} because it is not in GROUP BY and not inside an aggregate function.",
+    "AGGREGATE_IN_WHERE": "An aggregate such as {{aggregate}} cannot appear in WHERE: WHERE filters rows before grouping. To filter on an aggregate use HAVING.",
+    "AGGREGATE_IN_GROUP_BY": "An aggregate function cannot be used in GROUP BY: {{aggregate}}.",
+    "NESTED_AGGREGATE": "An aggregate function cannot be used inside another one: {{aggregate}}.",
+    "AGGREGATE_TYPE_INVALID": "Operand data type {{type}} is invalid for the {{fn}} operator.",
+    "OPERAND_TYPE_CLASH": "Incompatible types in the operation: {{left}} {{op}} {{right}}.",
+    "NON_BOOLEAN_CONDITION": "{{expression}} is not a condition: a comparison was expected (for example with =, >, LIKE or IS NULL).",
+    "GROUP_BY_CONSTANT": "Each GROUP BY expression must contain at least one column: {{expression}}.",
+    "ORDER_BY_POSITION_OUT_OF_RANGE": "ORDER BY {{position}} is out of range: the SELECT has $t(common.columns, {\"count\": {{count}} }).",
+    "ORDER_BY_NOT_IN_SELECT_DISTINCT": "With SELECT DISTINCT, ORDER BY items must appear in the select list: {{item}}.",
+    "INVALID_TOP": "Invalid TOP value: {{value}}.",
+    "CONVERSION_FAILED": "Conversion failed: \"{{value}}\" cannot be converted to type {{type}}.",
+    "DIVIDE_BY_ZERO": "Divide by zero error encountered.",
+    "INVALID_TABLE_DATA": "Table {{table}} has an invalid value in row {{row}}, column {{column}}: \"{{value}}\" is not of type $t(table.types.{{type}})."
+  },
+  "feature": {
+    "function": "The {{name}} function",
+    "JOIN": "JOIN (combining several tables, planned for version 1.0)",
+    "SUBQUERY": "Subqueries",
+    "ROLLUP": "ROLLUP (planned for a future version)",
+    "CUBE": "CUBE (planned for a future version)",
+    "GROUPING_SETS": "GROUPING SETS (planned for a future version)",
+    "UNION": "UNION",
+    "INTERSECT": "INTERSECT",
+    "EXCEPT": "EXCEPT",
+    "WITH_CTE": "WITH (common table expressions)",
+    "SELECT_INTO": "SELECT ... INTO",
+    "FOR_XML_FOR_JSON": "FOR XML / FOR JSON",
+    "OVER": "Window functions (OVER)",
+    "CASE": "The CASE expression",
+    "CAST": "CAST",
+    "CONVERT": "CONVERT",
+    "TOP_WITH_TIES": "TOP ... WITH TIES",
+    "OFFSET_FETCH": "OFFSET ... FETCH (paging)",
+    "ROW_VALUE": "Lists of values in parentheses",
+    "EXPRESSION": "This expression",
+    "ESCAPE": "LIKE ... ESCAPE"
+  },
+  "sample": {
+    "table": "Pets",
+    "columns": {
+      "id": "Id",
+      "name": "Name",
+      "species": "Species",
+      "breed": "Breed",
+      "color": "Color",
+      "age": "Age",
+      "weight": "Weight",
+      "adoption": "AdoptionDate"
+    },
+    "species": {
+      "dog": "Dog",
+      "cat": "Cat",
+      "rabbit": "Rabbit",
+      "bird": "Bird",
+      "hamster": "Hamster"
+    },
+    "breeds": {
+      "labrador": "Labrador",
+      "poodle": "Poodle",
+      "germanShepherd": "German Shepherd",
+      "beagle": "Beagle",
+      "mixedDog": "Mixed breed",
+      "siamese": "Siamese",
+      "persian": "Persian",
+      "european": "European Shorthair",
+      "mixedCat": "Mixed breed",
+      "dwarf": "Dwarf",
+      "lop": "Lop",
+      "canary": "Canary",
+      "parakeet": "Parakeet",
+      "cockatiel": "Cockatiel",
+      "syrian": "Syrian",
+      "russian": "Russian dwarf"
+    },
+    "colors": {
+      "black": "Black",
+      "white": "White",
+      "brown": "Brown",
+      "gray": "Gray",
+      "golden": "Golden",
+      "orange": "Orange",
+      "cream": "Cream",
+      "tricolor": "Tricolor"
+    },
+    "aliases": {
+      "count": "PetCount"
+    }
+  },
+  "timeline": {
+    "notUsed": "{{stage}}: the query does not use this stage"
+  },
+  "tables": {
+    "heading": "Tables",
+    "new": "New table",
+    "import": "Import",
+    "importSoon": "CSV and JSON import is coming in version 0.2.",
+    "inQuery": "in the query",
+    "hasProblems": "check",
+    "empty": "There are no tables. Create a new one.",
+    "restoreSample": "Restore the sample table",
+    "newTableName": "NewTable",
+    "edit": "Edit",
+    "editTable": "Edit table {{name}}"
+  },
+  "sheet": {
+    "title": "Edit table",
+    "close": "Close (Esc)",
+    "delete": "Delete table",
+    "confirmDelete": "Delete table {{name}}? This cannot be undone.",
+    "confirmYes": "Yes, delete",
+    "cancel": "Cancel"
+  },
+  "stale": {
+    "message": "The data changed. Run the query again.",
+    "run": "Run again"
+  },
+  "anim": {
+    "label": "Animation",
+    "replay": "Replay",
+    "speed": "Animation speed",
+    "speeds": {
+      "slow": "Slow",
+      "normal": "Normal",
+      "fast": "Fast"
+    },
+    "reduced": "reduced motion",
+    "reducedHint": "Your system asks for reduced motion: soft fades replace movement. This is changed in the system accessibility settings.",
+    "true": "true",
+    "false": "false",
+    "unknown": "UNKNOWN",
+    "pause": "Pause",
+    "resume": "Resume",
+    "skip": "Skip to end",
+    "start": "Animate",
+    "newGroup": "new group"
+  },
+  "projector": {
+    "on": "Projector mode",
+    "off": "Leave projector mode",
+    "hint": "Larger text and only the step by step"
+  }
+}

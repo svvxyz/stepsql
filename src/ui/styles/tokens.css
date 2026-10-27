@@ -1,0 +1,132 @@
+/*
+ * "Cuaderno técnico" design tokens.
+ *
+ * Light and dark are the same identity: fonts, sizes, radii and spacing live
+ * only in the first block. The dark block redefines colors and nothing else.
+ * Contrast pairs are checked by tests/ui/contrast.test.ts.
+ */
+
+:root {
+  /* Type — identical in both themes */
+  --font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --font-ui: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  /* Geometry — identical in both themes */
+  --radius-sm: 4px;
+  --radius: 6px;
+  --line-w: 1px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --bar-w: 5px;
+
+  /* Paper */
+  --bg: #f6f1e7;
+  --surface: #fbf8f1;
+  --surface-2: #efe8da;
+  --text: #1f1b16;
+  --text-muted: #6b6154;
+  --line: #ddd3c2;
+  --line-strong: #94856f;
+  --shadow: 0 1px 0 rgb(31 27 22 / 0.06);
+  --scrim: rgb(31 27 22 / 0.42);
+
+  /* Accent = new / computed. --accent is for fills and marks, --accent-ink for text. */
+  --accent: #d94f30;
+  --accent-ink: #b23a1e;
+  --accent-soft: #f8e0d6;
+  --accent-strong: #b23a1e;
+  --on-accent: #ffffff;
+
+  /* States */
+  --discarded-text: #6e6355;
+  --discarded-bg: #f1ece2;
+  --danger: #a3271b;
+  --danger-soft: #fbe3de;
+  --note-bg: #fff4c2;
+  --note-mark: #f2c200;
+  --focus: #1f5f99;
+
+  /* Column roles */
+  --hl-key: #1e6b5c;
+  --hl-agg: #6b3fa0;
+  --hl-computed: #b23a1e;
+  --hl-sort: #1f5f99;
+
+  /* SQL */
+  --sql-keyword: #a8351a;
+  --sql-string: #2f6b3a;
+  --sql-number: #1f5f99;
+  --sql-comment: #7a6f60;
+  --sql-operator: #6b6154;
+  --sql-function: #6b3fa0;
+  --clause-hl: #ffe98a;
+  --clause-hl-soft: #fff3c4;
+  --active-line: #f3ecdf;
+  --cursor: #d94f30;
+
+  /* Groups: vivid marker (bars, dots, tags) is the same in both themes; the row fill changes. */
+  --g0: #f2c200; --g0-fill: #fff2b3;
+  --g1: #f0569b; --g1-fill: #fcddea;
+  --g2: #3dbe6b; --g2-fill: #d9f2df;
+  --g3: #2fa8e0; --g3-fill: #d6ecf8;
+  --g4: #9b6bf2; --g4-fill: #e7defb;
+  --g5: #ff8a1f; --g5-fill: #ffe2c6;
+  --on-marker: #1f1b16;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #1c1a17;
+  --surface: #25221e;
+  --surface-2: #2e2a25;
+  --text: #ede6d8;
+  --text-muted: #b3a895;
+  --line: #3a352e;
+  --line-strong: #8a7f6e;
+  --shadow: 0 1px 0 rgb(0 0 0 / 0.25);
+  --scrim: rgb(10 9 8 / 0.62);
+
+  --accent: #ff7a59;
+  --accent-ink: #ff7a59;
+  --accent-soft: #45281f;
+  --accent-strong: #ff7a59;
+  --on-accent: #1c1a17;
+
+  --discarded-text: #a0947f;
+  --discarded-bg: #221f1b;
+  --danger: #ff8a7a;
+  --danger-soft: #3d201b;
+  --note-bg: #3a3218;
+  --note-mark: #f2c200;
+  --focus: #8ec5f2;
+
+  --hl-key: #7fd6c2;
+  --hl-agg: #c9a8f5;
+  --hl-computed: #ff9b7e;
+  --hl-sort: #8ec5f2;
+
+  --sql-keyword: #ff9b7e;
+  --sql-string: #9bd3a2;
+  --sql-number: #8ec5f2;
+  --sql-comment: #a0947f;
+  --sql-operator: #b3a895;
+  --sql-function: #c9a8f5;
+  --clause-hl: #4d4216;
+  --clause-hl-soft: #3a3320;
+  --active-line: #2b2823;
+  --cursor: #ff7a59;
+
+  --g0-fill: #3d3517;
+  --g1-fill: #3e2230;
+  --g2-fill: #1f3a28;
+  --g3-fill: #1b3340;
+  --g4-fill: #2f2744;
+  --g5-fill: #422a19;
+
+  color-scheme: dark;
+}

@@ -1,0 +1,53 @@
+name: Release
+
+# Pushing a tag such as v0.1.0 creates a GitHub Release with generated notes
+# and the compiled site attached as stepsql-v0.1.0.zip. See docs/release-checklist.md.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Check that the tag matches package.json
+        run: |
+          version="$(node -p "require('./package.json').version")"
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $version"
+            exit 1
+          fi
+
+      - name: Check that no placeholders are left
+        run: |
+          if grep -rn --exclude-dir=node_modules --exclude-dir=.git "<<""COMPLETAR" .; then
+            echo "::error::Replace the placeholders listed above before releasing"
+            exit 1
+          fi
+
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+      - name: Package the site
+        run: |
+          cp LICENSE THIRD-PARTY-NOTICES.md dist/
+          (cd dist && zip -r "../stepsql-$GITHUB_REF_NAME.zip" .)
+
+      - uses: softprops/action-gh-release@v3
+        with:
+          generate_release_notes: true
+          prerelease: ${{ contains(github.ref_name, '-') }}
+          files: stepsql-${{ github.ref_name }}.zip

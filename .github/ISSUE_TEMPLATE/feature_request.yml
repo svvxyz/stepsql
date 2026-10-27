@@ -1,0 +1,36 @@
+name: Propose a feature / Proponer una funcionalidad
+description: An idea for a new clause, a teaching aid or an improvement. / Una idea para una cláusula nueva, una ayuda didáctica o una mejora.
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        You can write in English or Spanish. Check the "Not supported yet" list in the README first. / Puedes escribir en inglés o en español. Mira antes la lista "Todavía no soportado" del README.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What would it help to teach or understand? / ¿Qué ayudaría a enseñar o entender?
+      description: The situation in class or while learning. / La situación en clase o al aprender.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal / Propuesta
+      description: What StepSQL should do or show. / Qué debería hacer o mostrar StepSQL.
+    validations:
+      required: true
+
+  - type: textarea
+    id: example
+    attributes:
+      label: Example query / Consulta de ejemplo
+      render: sql
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives or references / Alternativas o referencias

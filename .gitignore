@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Build output and caches
+dist/
+dist-ssr/
+*.tsbuildinfo
+.vite/
+.cache/
+coverage/
+*.tgz
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files (never commit secrets)
+.env
+.env.*
+!.env.example
+*.local
+
+# Hosting tools
+.vercel/
+
+# Editors and local tool settings
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*~
+.claude/
+
+# Operating systems
+.DS_Store
+Thumbs.db
+desktop.ini

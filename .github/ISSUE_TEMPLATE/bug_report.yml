@@ -1,0 +1,98 @@
+name: Report a bug / Reportar un error
+description: StepSQL shows a wrong step, a wrong result or an error it should not. / StepSQL muestra un paso, un resultado o un error incorrecto.
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. You can write in English or Spanish. / Gracias por avisar. Puedes escribir en inglés o en español.
+        Remember that StepSQL shows the logical order, not SQL Server's execution plan. / Recuerda que StepSQL muestra el orden lógico, no el plan de ejecución.
+
+  - type: textarea
+    id: query
+    attributes:
+      label: SQL query / Consulta SQL
+      description: The exact query you ran. / La consulta exacta que ejecutaste.
+      render: sql
+      placeholder: SELECT Species, COUNT(*) AS PetCount FROM Pets GROUP BY Species
+    validations:
+      required: true
+
+  - type: textarea
+    id: table
+    attributes:
+      label: Table / Tabla
+      description: |
+        Did you use the sample table unchanged? If not, paste the columns (with their types) and the rows needed to reproduce it.
+        ¿Usaste la tabla de ejemplo sin cambios? Si no, pega las columnas (con su tipo) y las filas necesarias para reproducirlo.
+      placeholder: |
+        Sample table unchanged / Tabla de ejemplo sin cambios
+        — or —
+        Name (text) | Age (integer)
+        Mora | 7
+        Luna | NULL
+    validations:
+      required: true
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Stage / Etapa
+      description: Where does it go wrong? / ¿Dónde falla?
+      options:
+        - FROM
+        - WHERE
+        - GROUP BY
+        - Aggregates / Agregados
+        - HAVING
+        - SELECT
+        - DISTINCT
+        - ORDER BY
+        - TOP
+        - Result / Resultado
+        - Error message / Mensaje de error
+        - Not sure / No lo sé
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result / Resultado esperado
+      description: What SQL Server returns, or what you expected to see. / Lo que devuelve SQL Server o lo que esperabas ver.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result / Resultado obtenido
+      description: What StepSQL showed. A screenshot helps. / Lo que mostró StepSQL. Una captura ayuda.
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version / Navegador y versión
+      placeholder: Chrome 140, Firefox 142, Safari 19…
+    validations:
+      required: true
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: Interface language / Idioma de la interfaz
+      options:
+        - English
+        - Español
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: StepSQL version / Versión de StepSQL
+      description: Live demo, or the version you run locally. / La demo en vivo o la versión que ejecutas en local.
+      placeholder: Live demo / Demo en vivo
